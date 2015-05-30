@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AFHTTPRequestOperationManager.h"
+@interface HomeViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
+@property(nonatomic, retain) UITableView *tableView;
+@property(nonatomic, retain) NSMutableArray *mutableArray;
 
-@interface HomeViewController : UIViewController
 
 @end
