@@ -7,6 +7,7 @@
 //
 #import <Foundation/Foundation.h>
 #import "HomeViewController.h"
+#import "PostsControllerViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -63,6 +64,20 @@
     cell.textLabel.text = [pair objectForKey: @"name"];
     return cell;
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   // NSDictionary *dictionary = [self.mutableArray objectAtIndex:[indexPath row]];  //这个表示选中的那个cell上的数据
+   // NSString *titileString = [dictionary objectForKey: @"name"];
+   // UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示"message:titileString delegate:self cancelButtonTitle:@"OK"otherButtonTitles:nil];
+   // [alert show];
+    int row = indexPath.row;
+    NSDictionary *dict = [self.mutableArray objectAtIndex: row];
+    NSNumber *category_id = [dict objectForKey: @"id"];
+    NSLog(@"%@", category_id);
+    PostsControllerViewController * postsController = [[PostsControllerViewController alloc]init];
+    postsController.category_id = category_id;
+    postsController.title = @"详情";
+    [self.navigationController pushViewController:postsController animated: YES];
+}
 
 @end
